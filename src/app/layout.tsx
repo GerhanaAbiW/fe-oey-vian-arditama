@@ -1,6 +1,7 @@
 import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { SWRConfig } from "swr";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,12 +31,20 @@ export default function RootLayout({
   ];
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      <SWRConfig
+        value={{
+          revalidateOnFocus: false,
+          revalidateOnReconnect: false,
+          shouldRetryOnError: false,
+        }}
       >
-        <Navbar logo={"/next.svg"} buttons={navButtons} height="72px" />
-        {children}
-      </body>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Navbar logo={"/next.svg"} buttons={navButtons} height="72px" />
+          {children}
+        </body>
+      </SWRConfig>
     </html>
   );
 }
