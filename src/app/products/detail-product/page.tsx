@@ -1,3 +1,4 @@
+"use client";
 import { useDetailProduct } from "./hooks";
 
 const DetailProductPage = () => {

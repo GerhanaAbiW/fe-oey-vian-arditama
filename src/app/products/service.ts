@@ -3,7 +3,7 @@ import { V1Instance } from "@/utils/axios-instances";
 import { handleErrorService } from "@/utils/handle-error-service";
 import { AxiosError, AxiosResponse } from "axios";
 
-const GetListProduct = async () => {
+const GetProducts = async () => {
   try {
     const response: AxiosResponse<ModelProduct[]> = await V1Instance.get(`list-product`);
     return response.data;
@@ -12,4 +12,4 @@ const GetListProduct = async () => {
   }
 };
 
-export default GetListProduct;
+export default GetProducts;

@@ -1,6 +1,6 @@
 export interface ButtonItem {
   text: string;
-  onClick: () => void;
+  link: string;
 }
 
 export interface NavbarProps {

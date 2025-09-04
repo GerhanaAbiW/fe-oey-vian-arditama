@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { NavbarProps } from "./type";
 
@@ -31,13 +32,12 @@ const Navbar: React.FC<NavbarProps> = ({
 
       <div className="flex gap-4">
         {buttons.map((btn) => (
-          <button
+          <div
             key={btn.text}
-            onClick={btn.onClick}
             className="px-4 py-2 rounded-xl bg-blue-500 text-white font-medium hover:opacity-90 transition-all shadow-md"
           >
-            {btn.text}
-          </button>
+            <Link href={btn.link}>{btn.text}</Link>
+          </div>
         ))}
       </div>
     </nav>

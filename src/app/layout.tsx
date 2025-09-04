@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -22,11 +23,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navButtons = [
+    { text: "Dashboard", link: "/" },
+    { text: "Products", link: "/products" },
+    { text: "Error Page", link: "/error" },
+  ];
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Navbar logo={"/next.svg"} buttons={navButtons} height="72px" />
         {children}
       </body>
     </html>
