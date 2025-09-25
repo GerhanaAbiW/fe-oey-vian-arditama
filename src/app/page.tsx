@@ -1,17 +1,11 @@
-"use client";
-import { useDashboard } from "./hooks";
+// src/app/page.tsx
+import Hero from "@/components/hero";
+import { DEFAULT_HERO } from "@/components/hero/constant";
 
-const DashboardPage = () => {
-  const { data, error, isLoading } = useDashboard();
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-  if (!data) return <p>No dashboard data found.</p>;
+export default function Home() {
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>{data[0].title}</p>
-    </div>
+    <main>
+      <Hero {...DEFAULT_HERO} />
+    </main>
   );
-};
-
-export default DashboardPage;
+}

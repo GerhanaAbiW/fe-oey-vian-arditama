@@ -1,3 +1,4 @@
+"use client";
 import { useAboutUs } from "./hooks";
 
 const AboutUsPage = () => {

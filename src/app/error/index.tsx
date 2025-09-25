@@ -1,3 +1,4 @@
+"use client";
 import { useErrorStore } from "@/stores/useErrorStore/store";
 
 const ErrorPage = () => {
