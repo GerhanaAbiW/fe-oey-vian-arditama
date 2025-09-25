@@ -1,35 +1,52 @@
+import Link from "next/link";
 import Image from "next/image";
-import React from "react";
+import clsx from "clsx";
 import { ProductCardProps } from "./type";
 
-
-
-const ProductCard: React.FC<ProductCardProps> = ({
+export default function ProductCard({
+  imageSrc,
   title,
-  description,
-  image,
-  onClick,
-}) => {
+  bullets,
+  ctaHref,
+  ctaLabel = "View Specs",
+  className,
+}: ProductCardProps) {
   return (
-    <button
-      onClick={onClick}
-      className="cursor-pointer w-72 bg-white rounded-2xl shadow-md hover:shadow-lg transition-all overflow-hidden flex flex-col text-left"
+    <article
+      className={clsx(
+        "rounded-2xl border border-slate-200 bg-white p-4 shadow-sm",
+        className
+      )}
     >
-      <div className="relative w-full h-48">
+      <div className="rounded-xl bg-slate-200/60">
         <Image
-          src={image}
+          src={imageSrc ?? "/placeholders/product.png"}
           alt={title}
-          fill
-          className="object-cover"
-          sizes="(max-width: 768px) 100vw, 300px"
+          width={640}
+          height={400}
+          className="h-40 w-full rounded-xl object-cover"
         />
       </div>
-      <div className="p-4 flex flex-col gap-2">
-        <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
-        <p className="text-sm text-gray-600 line-clamp-3">{description}</p>
-      </div>
-    </button>
-  );
-};
 
-export default ProductCard;
+      <h3 className="mt-3 text-[16px] font-semibold text-slate-900">{title}</h3>
+      <ul className="mt-1 text-sm text-slate-600">
+        {bullets.map((b, i) => (
+          <li key={i} className="truncate">
+            {b.text}
+          </li>
+        ))}
+      </ul>
+
+      {ctaHref && (
+        <div className="mt-3">
+          <Link
+            href={ctaHref}
+            className="inline-block rounded-md bg-slate-900 px-4 py-2 text-sm font-semibold text-white"
+          >
+            {ctaLabel}
+          </Link>
+        </div>
+      )}
+    </article>
+  );
+}
